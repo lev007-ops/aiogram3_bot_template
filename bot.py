@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 async def on_startup(bot: Bot, admin_ids: list[int]):
-    await broadcaster.broadcast(bot, admin_ids, "Бот був запущений")
+    await broadcaster.broadcast(bot, admin_ids, "The bot has been launched!")
 
 
 def register_global_middlewares(dp: Dispatcher, config):
@@ -26,7 +26,8 @@ def register_global_middlewares(dp: Dispatcher, config):
 async def main():
     logging.basicConfig(
         level=logging.INFO,
-        format=u'%(filename)s:%(lineno)d #%(levelname)-8s [%(asctime)s] - %(name)s - %(message)s',
+        format=u'%(filename)s:%(lineno)d #%(levelname)-8s '
+        '[%(asctime)s] - %(name)s - %(message)s',
     )
     logger.info("Starting bot")
     config = load_config(".env")
@@ -51,5 +52,5 @@ async def main():
 if __name__ == '__main__':
     try:
         asyncio.run(main())
-    except (KeyboardInterrupt, SystemExit):
-        logger.error("Бот був вимкнений!")
+    except (KeyboardInterrupt):
+        logger.error("The bot has been stopped!")
