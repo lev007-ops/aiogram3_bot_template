@@ -52,10 +52,7 @@ def load_config(path: str = None):
             database=env.str('DB_NAME')
         ),
         redis=Redis(
-            password=env.str("REDIS_PASSWORD"),
-            host=env.str("REDIS_HOST"),
-            database=env.int("REDIS_DATABASE"),
-            port=env.int("REDIS_PORT")
+            host=env.str("REDIS_HOST")
         ),
         misc=Miscellaneous()
     )
