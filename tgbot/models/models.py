@@ -6,7 +6,8 @@ config = load_config()
 db = pw.PostgresqlDatabase(config.db.database,
                            user=config.db.user,
                            password=config.db.password,
-                           
+                           host=config.db.host,
+                           autorollback=True
                            )
 
 # Peewee models
