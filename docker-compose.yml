@@ -14,8 +14,6 @@ services:
       context: .
     env_file:
       - ".env"
-    depends_on:
-      - db
   redis:
     image: redis:6.2-alpine
     restart: always
@@ -24,25 +22,9 @@ services:
     command: redis-server --save 20 1 --loglevel warning
     volumes: 
       - redis:/data
-  db:
-    image: postgres:14.4-alpine
-    restart: always
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASS}
-      - POSTGRES_DB=${DB_NAME}
-    env_file:
-      - ./.env
-    ports:
-      - 0.0.0.0:${DB_ONLINE_PORT}:5432
-    expose:
-      - 5432
 
 networks:
   overlay:
 
 volumes:
-  postgres_data:
   redis:

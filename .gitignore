@@ -65,3 +65,4 @@ venv.bak/
 pgdata
 postgres
 redisdata
+.DS_Store
